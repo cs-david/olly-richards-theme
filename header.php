@@ -27,26 +27,29 @@
 
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="or-logo-link" rel="home" aria-current="page">
+				<svg class="or-logo" viewBox="0 0 290 65"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/olly-richards-logo.svg?v=<?php echo time(); ?>#olly-richards-symbol-text"></use></svg>
+			</a>
 			<?php
-			the_custom_logo();
+
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title screen-reader-text"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="site-title screen-reader-text"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
 			$olly_richards_theme_description = get_bloginfo( 'description', 'display' );
 			if ( $olly_richards_theme_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $olly_richards_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="site-description screen-reader-text"><?php echo $olly_richards_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'olly-richards-theme' ); ?></button>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><svg viewBox="0 0 24 24"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-hamburger"></use></svg></button>
 			<?php
 			wp_nav_menu(
 				array(
@@ -56,4 +59,5 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
+		<a href="" class="btn btn-outline btn-cta" aria-label="call to action button">Mentorship</a>
 	</header><!-- #masthead -->

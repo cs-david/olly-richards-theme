@@ -20,13 +20,6 @@ if ( ! defined( '_S_VERSION' ) ) {
  * as indicating support for post thumbnails.
  */
 function olly_richards_theme_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on OllyRichards.co Theme, use a find and replace
-		* to change 'olly-richards-theme' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'olly-richards-theme', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -50,6 +43,7 @@ function olly_richards_theme_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'olly-richards-theme' ),
+			'footer-menu' => esc_html__( 'Footer', 'olly-richards-theme' )
 		)
 	);
 
@@ -70,35 +64,9 @@ function olly_richards_theme_setup() {
 		)
 	);
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'olly_richards_theme_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
 }
 add_action( 'after_setup_theme', 'olly_richards_theme_setup' );
 
@@ -115,31 +83,74 @@ function olly_richards_theme_content_width() {
 add_action( 'after_setup_theme', 'olly_richards_theme_content_width', 0 );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * Add custom post types
  */
-function olly_richards_theme_widgets_init() {
-	register_sidebar(
+
+function olly_richards_theme_custom_post_types() {
+	// Register a custom post type for "My courses"
+	register_post_type( 'my-courses',
 		array(
-			'name'          => esc_html__( 'Sidebar', 'olly-richards-theme' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'olly-richards-theme' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'labels' => array(
+				'name' => __( 'My Courses' ),
+				'singular_name' => __( 'Course' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'menu_icon' => 'dashicons-welcome-learn-more',
+		)
+	);
+	// Register a custom post type for "Testimonials"
+	register_post_type( 'testimonials',
+		array(
+			'labels' => array(
+				'name' => __( 'Testimonials' ),
+				'singular_name' => __( 'Testimonial' )
+			),
+			'public' => true,
+			'has_archive' => false,
+			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'menu_icon' => 'dashicons-visibility',
+		)
+	);
+
+	// Register a custom post type for "My Events"
+	register_post_type( 'testimonials',
+		array(
+			'labels' => array(
+				'name' => __( 'My Events' ),
+				'singular_name' => __( 'Event' )
+			),
+			'public' => true,
+			'has_archive' => false,
+			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'menu_icon' => 'dashicons-calendar',
+		)
+	);
+
+	// Register a custom post type for "My Media"
+	register_post_type( 'media',
+		array(
+			'labels' => array(
+				'name' => __( 'My Media' ),
+				'singular_name' => __( 'Media' )
+			),
+			'public' => true,
+			'has_archive' => false,
+			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'menu_icon' => 'dashicons-controls-play',
 		)
 	);
 }
-add_action( 'widgets_init', 'olly_richards_theme_widgets_init' );
+add_action( 'init', 'olly_richards_theme_custom_post_types' );
 
 /**
  * Enqueue scripts and styles.
  */
 function olly_richards_theme_scripts() {
-	wp_enqueue_style( 'olly-richards-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'olly-richards-theme-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'olly-richards-theme-style-base', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'olly-richards-theme-style-base', 'rtl', 'replace' );
+	wp_enqueue_style( 'olly-richards-theme-style', get_template_directory_uri() . '/css/or-style.css', array(), _S_VERSION );
 
 	wp_enqueue_script( 'olly-richards-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
