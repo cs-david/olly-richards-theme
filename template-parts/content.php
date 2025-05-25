@@ -21,10 +21,7 @@
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
-				<?php
-				olly_richards_theme_posted_on();
-				olly_richards_theme_posted_by();
-				?>
+				<?php olly_richards_theme_posted_on(); ?> · <?php olly_richards_theme_entry_footer(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -56,8 +53,4 @@
 		);
 		?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php olly_richards_theme_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

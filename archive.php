@@ -15,10 +15,26 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
+				<div class="wrap">
+					<div class="archive-header-columns">
+						<div class="ahc-left">
+							<?php
+							the_archive_title( '<h1 class="page-title">', '</h1>' );
+							the_archive_description( '<div class="archive-description">', '</div>' );
+							?>
+						</div>
+						<div class="ahc-right">
+							<?php
+							$pattern_post_id = 182;
+
+							$pattern_post = get_post( $pattern_post_id );
+
+							if ( $pattern_post && $pattern_post->post_type === 'wp_block' ) {
+								echo do_blocks( $pattern_post->post_content );
+							}
+							?>
+						</div>
+				</div>
 			</header><!-- .page-header -->
 
 			<?php
@@ -47,5 +63,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
