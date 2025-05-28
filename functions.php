@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1.0' );
+	define( '_S_VERSION', '1.1.1' );
 }
 
 /**
@@ -289,8 +289,8 @@ function olly_insights_carousel_function() {
 						nav: true,
 						dots: false,
 						navText: [
-							'<svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-left"></use></svg>',
-							'<svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-right"></use></svg>'
+							'<span class="screen-reader-text">Previous Article</span><svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-left"></use></svg>',
+							'<span class="screen-reader-text">Next Article</span><svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-right"></use></svg>'
 						],
 						responsive: {
 							0: {
@@ -362,7 +362,7 @@ function olly_testimonial_carousel_function($atts) {
 		<div class="testimonials-container">
 			<div class="owl-carousel testimonials-carousel">
 				<?php while ($query->have_posts()) : $query->the_post(); ?>
-					<div class="single-testimonial" data-dot='<button role="button" class="dot-thumb" style="background-image:url(<?php echo esc_url(get_field("testi_headshot")); ?>)"></button>'>
+					<div class="single-testimonial" data-dot='<button role="button" class="dot-thumb" aria-label="switch testimonial" style="background-image:url(<?php echo esc_url(get_field("testi_headshot")); ?>)"></button>'>
 						<div>
 							<svg viewBox="0 0 72 73"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#quote-symbol"></use></svg>
 							<blockquote><?php echo esc_html(get_field('testi_quote')); ?></blockquote>

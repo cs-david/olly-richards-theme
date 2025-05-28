@@ -129,8 +129,8 @@ get_header();
 						nav: true,
 						dots: false,
 						navText: [
-							'<svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-left"></use></svg>',
-							'<svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-right"></use></svg>'
+							'<span class="screen-reader-text">Previous Event</span><svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-left"></use></svg>',
+							'<span class="screen-reader-text">Next Event</span><svg viewBox="0 0 16 13"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#icon-arrow-right"></use></svg>'
 						],
 						items: 1,
 					});
