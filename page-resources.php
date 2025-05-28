@@ -43,7 +43,7 @@ get_header();
 		<?php endwhile; // End of the loop.
 		?>
 		<div class="wrap">
-			<h2>My Events</h2>
+			<h2 class="res-h2">My Events</h2>
 		</div>
 
 	<?php
@@ -114,7 +114,11 @@ get_header();
 					if (differenceWidth > 64) {
 						marginWidth = differenceWidth;
 					} else {
-						marginWidth = 32;
+						if (viewPort > 728) {
+							marginWidth = 32;
+						} else {
+							marginWidth = 24;
+						}
 					}
 		
 
@@ -160,7 +164,7 @@ get_header();
 
 		<div class="wrap">
 			<hr>
-			<h2>My Media</h2>
+			<h2 class="res-h2">My Media</h2>
 		</div>
 
 		<div class="wrap query-container">

@@ -26,8 +26,8 @@ get_header();
 
 			the_post_navigation(
 				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'olly-richards-theme' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'olly-richards-theme' ) . '</span> <span class="nav-title">%title</span>',
+					'prev_text' => '<span class="nav-subtitle screen-reader-text">' . esc_html__( 'Previous:', 'olly-richards-theme' ) . '</span> <svg viewBox="0 0 16 13"><use xlink:href="'. get_template_directory_uri() .'/img/svg/icon-sprite.svg?v='. time() .'#icon-arrow-left"></use></svg> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle screen-reader-text">' . esc_html__( 'Next:', 'olly-richards-theme' ) . '</span> <span class="nav-title">%title</span><svg viewBox="0 0 16 13"><use xlink:href="'. get_template_directory_uri() .'/img/svg/icon-sprite.svg?v='. time() .'#icon-arrow-right"></use></svg>',
 				)
 			);
 

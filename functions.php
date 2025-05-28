@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.2' );
+	define( '_S_VERSION', '1.1.0' );
 }
 
 /**
@@ -273,7 +273,12 @@ function olly_insights_carousel_function() {
 					if (differenceWidth > 64) {
 						marginWidth = differenceWidth;
 					} else {
-						marginWidth = 32;
+						if (viewPort > 728) {
+							marginWidth = 32;
+						} else {
+							marginWidth = 24;
+						}
+						
 					}
 		
 
@@ -425,3 +430,43 @@ function olly_single_testimonial_function($atts) {
 	return $output;
 }
 add_shortcode('olly_single_testimonial', 'olly_single_testimonial_function');
+
+function custom_comment_form_placeholders($fields) {
+    $fields['author'] = '<div class="commenter-data"><p class="comment-form-author">' .
+        '<input id="author" name="author" type="text" placeholder="Name"' . 
+        (is_user_logged_in() ? '' : ' required="required"') . 
+        ' /></p>';
+
+    $fields['email'] = '<p class="comment-form-email">' .
+        '<input id="email" name="email" type="email" placeholder="Email"' .
+        (is_user_logged_in() ? '' : ' required="required"') .
+        ' /></p></div>';
+
+	unset($fields['url']); 
+
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'custom_comment_form_placeholders');
+
+function custom_comment_textarea_placeholder($args) {
+    $args['comment_field'] = '<p class="comment-form-comment">' .
+        '<textarea id="comment" name="comment" rows="5" placeholder="Leave your comment" required="required"></textarea></p>';
+    return $args;
+}
+add_filter('comment_form_defaults', 'custom_comment_textarea_placeholder');
+
+function custom_comment_form_reorder($defaults) {
+    // Store the consent checkbox field
+    $cookies = isset($defaults['comment_notes_after']) ? $defaults['comment_notes_after'] : '';
+
+    // Remove it from its default position
+    $defaults['comment_notes_after'] = '';
+
+    // Move it to below the submit button
+    add_filter('comment_form', function($post_id) use ($cookies) {
+        echo $cookies;
+    });
+
+    return $defaults;
+}
+add_filter('comment_form_defaults', 'custom_comment_form_reorder');
