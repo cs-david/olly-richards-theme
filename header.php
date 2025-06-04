@@ -59,5 +59,5 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-		<a href="" class="btn btn-outline btn-cta" aria-label="call to action button">Mentorship</a>
+		<a href="<?php echo esc_url( home_url( '/mentorship' ) ); ?>" class="btn btn-outline btn-cta" aria-label="call to action button">Mentorship</a>
 	</header><!-- #masthead -->

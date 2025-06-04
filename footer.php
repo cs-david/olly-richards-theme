@@ -35,32 +35,6 @@
 						);
 						?>
 					</div>
-					<div class="footer-menu-courses">
-						<h2>Courses</h2>
-						<?php 
-						$args = array(
-							'post_type'      => 'my-courses',
-							'posts_per_page' => -1,
-							'orderby'        => 'title',
-							'order'          => 'ASC',
-						);
-
-						$courses_query = new WP_Query($args);
-
-						if ($courses_query->have_posts()) {
-							echo '<ul>';
-							while ($courses_query->have_posts()) {
-								$courses_query->the_post();
-								echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
-							}
-							echo '</ul>';
-						} else {
-							echo '<p>No courses found.</p>';
-						}
-
-						wp_reset_postdata();
-						?>
-					</div>
 				</div>
 			</div><!-- .wrap -->
 			<svg class="or-footer" viewBox="0 0 362 29"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/olly-richards-logo.svg?v=<?php echo time(); ?>#olly-richards-text"></use></svg>		
