@@ -41,7 +41,7 @@ get_header();
 				</div>
 			</header><!-- .page-header -->
 			<div class="wrap filter-container">
-                <?php echo do_shortcode('[searchandfilter field="6"]'); ?>
+                <?php echo do_shortcode('[searchandfilter field="11"]'); ?>
                 <?php echo do_shortcode('[searchandfilter field="5"]'); ?>
             </div>
             <div class="wrap query-container">

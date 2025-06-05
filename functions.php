@@ -98,6 +98,7 @@ function olly_richards_theme_custom_post_types() {
 			'has_archive' => true,
 			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 			'menu_icon' => 'dashicons-welcome-learn-more',
+			'taxonomies' => array( 'category' ),
 		)
 	);
 	// Register a custom post type for "Testimonials"
