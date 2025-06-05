@@ -17,7 +17,21 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', get_post_type() ); ?>
+
+			<div class="post-cta">
+				<?php
+				$pattern_post_id = 1110;
+
+				$pattern_post = get_post( $pattern_post_id );
+
+				if ( $pattern_post && $pattern_post->post_type === 'wp_block' ) {
+					echo do_blocks( $pattern_post->post_content );
+				}
+				?>
+			</div>
+
+			<?php
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

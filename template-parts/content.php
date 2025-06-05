@@ -21,7 +21,7 @@
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
-				<?php olly_richards_theme_posted_on(); ?> · <?php olly_richards_theme_entry_footer(); ?>
+				<?php olly_richards_theme_entry_footer(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 		<?php if ( 'testimonials' === get_post_type() ) :
