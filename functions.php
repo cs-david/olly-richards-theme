@@ -123,7 +123,7 @@ function olly_richards_theme_custom_post_types() {
 				'singular_name' => __( 'Event' )
 			),
 			'public' => true,
-			'has_archive' => false,
+			'has_archive' => true,
 			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 			'menu_icon' => 'dashicons-calendar',
 		)
