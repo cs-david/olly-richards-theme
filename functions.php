@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1.4' );
+	define( '_S_VERSION', '1.1.5' );
 }
 
 /**
@@ -88,6 +88,20 @@ add_action( 'after_setup_theme', 'olly_richards_theme_content_width', 0 );
 
 function olly_richards_theme_custom_post_types() {
 	// Register a custom post type for "My courses"
+	// Register custom taxonomy for My Courses
+	register_taxonomy(
+		'my_course_category',
+		'my-courses',
+		array(
+			'label' => __( 'Course Categories' ),
+			'hierarchical' => false,
+			'show_admin_column' => true,
+			'rewrite' => array( 'slug' => 'course-category' ),
+			'show_in_rest' => true,
+		)
+	);
+
+	// Register the custom post type for "My courses"
 	register_post_type( 'my-courses',
 		array(
 			'labels' => array(
@@ -98,7 +112,7 @@ function olly_richards_theme_custom_post_types() {
 			'has_archive' => true,
 			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 			'menu_icon' => 'dashicons-welcome-learn-more',
-			'taxonomies' => array( 'category' ),
+			'taxonomies' => array( 'my_course_category' ),
 		)
 	);
 	// Register a custom post type for "Testimonials"
