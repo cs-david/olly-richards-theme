@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1.6' );
+	define( '_S_VERSION', '1.1.7' );
 }
 
 /**
@@ -158,6 +158,13 @@ function olly_richards_theme_custom_post_types() {
 	);
 }
 add_action( 'init', 'olly_richards_theme_custom_post_types' );
+
+add_action('template_redirect', function () {
+    if (is_singular('testimonials')) {
+        wp_redirect(home_url('/testimonials'), 301);
+        exit;
+    }
+});
 
 /**
  * Enqueue scripts and styles.

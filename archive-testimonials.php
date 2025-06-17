@@ -50,7 +50,7 @@ get_header();
 					[
 						'key'     => 'testi_featured_testimonial',
 						'value'   => '1',
-						'compare' => 'LIKE', // vagy '=' ha biztosan csak '1'
+						'compare' => 'LIKE', 
 					]
 				]
 			);
@@ -84,9 +84,9 @@ get_header();
 			endif;
 			?>
 
-            <div class="wrap query-container">
+            <div class="wrap">
 			<?php
-            echo "<div class='articles-container sf-articles'>";
+            echo "<div class='articles-container'>";
 
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -97,13 +97,11 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content-loop' );
+				get_template_part( 'template-parts/content-loop-testimonials' );
 
 			endwhile;
 
             echo "</div>";
-
-			echo do_shortcode('[searchandfilter field="7"]');
 
 		else :
 

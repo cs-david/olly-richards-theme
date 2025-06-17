@@ -24,18 +24,12 @@
 				<?php olly_richards_theme_entry_footer(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
-		<?php if ( 'testimonials' === get_post_type() ) :
-			?>
-			<span class="author-website"><?php echo get_field('testi_website-company'); ?></span>
-			<svg viewBox="0 0 72 73"><use xlink:href="<?php echo get_template_directory_uri(); ?>/img/svg/icon-sprite.svg?v=<?php echo time(); ?>#quote-symbol"></use></svg>		
-		<?php endif; ?>
 	</header><!-- .entry-header -->
 
 	<?php 
 	
-	if (get_field('testi_video') || get_field('media_link')) {
-		if(get_field('testi_video')) {echo get_field('testi_video');}
-		if(get_field('media_link')) {echo get_field('media_link');}
+	if (get_field('media_link')) {
+		echo get_field('media_link');
 	} else {
 		olly_richards_theme_post_thumbnail();
 	} ?>
