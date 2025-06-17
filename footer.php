@@ -41,7 +41,7 @@
 		</div>
 		<div class="footer-bottom">
 			<div class="wrap">
-				<p>&copy; <?php echo date('Y'); ?> Olly Richards. All rights reserved.</p>
+				<p>&copy; <?php echo date('Y'); ?> Olly Richards. All rights reserved. | <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">Terms of Service &amp; Privacy Policy</a></p>
 			</div>
 		</div>
 	</footer><!-- #colophon -->
