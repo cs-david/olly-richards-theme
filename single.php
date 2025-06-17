@@ -19,6 +19,8 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() ); ?>
 
+			<?php if(get_post_type() !== "my-courses") : ?>
+
 			<div class="post-cta">
 				<?php
 				$pattern_post_id = 1110;
@@ -44,6 +46,8 @@ get_header();
 					'next_text' => '<span class="nav-subtitle screen-reader-text">' . esc_html__( 'Next:', 'olly-richards-theme' ) . '</span> <span class="nav-title">%title</span><svg viewBox="0 0 16 13"><use xlink:href="'. get_template_directory_uri() .'/img/svg/icon-sprite.svg?v='. time() .'#icon-arrow-right"></use></svg>',
 				)
 			);
+
+			endif; // End of the if statement for post type check.
 
 		endwhile; // End of the loop.
 		?>
