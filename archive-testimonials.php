@@ -89,19 +89,31 @@ get_header();
             echo "<div class='articles-container'>";
 
 			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			// Query all testimonials except the featured one
+			$exclude_ids = [];
+			if ( isset( $featured_query ) && $featured_query->have_posts() ) {
+				foreach ( $featured_query->posts as $featured_post ) {
+					$exclude_ids[] = $featured_post->ID;
+				}
+			}
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content-loop-testimonials' );
+			$all_args = array(
+				'post_type'      => 'testimonials',
+				'posts_per_page' => -1,
+				'post__not_in'   => $exclude_ids,
+			);
 
-			endwhile;
+			$all_query = new WP_Query( $all_args );
 
-            echo "</div>";
+			if ( $all_query->have_posts() ) :
+				while ( $all_query->have_posts() ) :
+					$all_query->the_post();
+					get_template_part( 'template-parts/content-loop-testimonials' );
+				endwhile;
+				wp_reset_postdata();
+			endif;
+
+			echo "</div>";
 
 		else :
 

@@ -110,9 +110,10 @@ function olly_richards_theme_custom_post_types() {
 			),
 			'public' => true,
 			'has_archive' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
 			'menu_icon' => 'dashicons-welcome-learn-more',
 			'taxonomies' => array( 'my_course_category' ),
+			'show_in_rest' => true, // Enable Gutenberg support
 		)
 	);
 	// Register a custom post type for "Testimonials"
