@@ -28,6 +28,9 @@ get_header();
                             </div>
 						</div>
 						<div class="ahc-right">
+							<?php if ( has_post_thumbnail( $page_id ) ) : ?>
+								<?php echo get_the_post_thumbnail( $page_id, 'full' ); ?>
+							<?php else : ?>
 							<?php
 							$pattern_post_id = 182;
 
@@ -37,6 +40,7 @@ get_header();
 								echo do_blocks( $pattern_post->post_content );
 							}
 							?>
+							<?php endif; ?>
 						</div>
 				</div>
 			</header><!-- .page-header -->
